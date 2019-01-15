@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+    public float jumpHeight;
+    public float gravity;
 
     private CharacterController cc;
     private Vector2 inputVector;
@@ -36,6 +38,11 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3();
         movement += transform.forward * inputVector.y * moveSpeed * Time.deltaTime;
         movement += transform.right   * inputVector.x * moveSpeed * Time.deltaTime;
+        if (!cc.isGrounded)
+        {
+            movement += Vector3.up * -1 * gravity * Time.deltaTime;
+            Debug.Log("Falling");
+        }
         cc.Move(movement);
     }
 }

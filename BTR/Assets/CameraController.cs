@@ -27,7 +27,6 @@ public class CameraController : MonoBehaviour
     private void GetInput()
     {
         rightStickInput = new Vector2(Input.GetAxis("HorizontalRight"), Input.GetAxis("VerticalRight"));
-        Debug.Log(rightStickInput);
     }
 
     // handles the movement caused by right stick input
